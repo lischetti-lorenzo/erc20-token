@@ -27,7 +27,7 @@ contract LearningToken is ERC20Interface {
     return balances[tokenOwner];
   }
 
-  function transfer(address to, uint tokens) public override returns (bool success) {
+  function transfer(address to, uint tokens) public virtual override returns (bool success) {
     require(balances[msg.sender] >= tokens);
 
     balances[to] += tokens;
@@ -51,7 +51,7 @@ contract LearningToken is ERC20Interface {
     return true;
   }
 
-  function transferFrom(address from, address to, uint tokens) public override returns (bool success) {
+  function transferFrom(address from, address to, uint tokens) public virtual override returns (bool success) {
     require(allowed[from][msg.sender] >= tokens);
     require(balances[from] >= tokens);
 
